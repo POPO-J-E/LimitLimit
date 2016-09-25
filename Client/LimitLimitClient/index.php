@@ -5,23 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.css" />
         <link rel="stylesheet" type="text/css" href="css/main.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
         <div class="container container-full">
-        <?php
-                include 'views/login.php';
-            ?>
-            <div id="usersContainer" class="col-md-2">
+
+        <i class="fa fa-bars fa-2x"></i>
+
+        <!-- <?php include 'views/login.php'; ?> -->
+            <div id="usersContainer" class="col-xs-12 col-md-2">
                 <ul class="list-group">
                     <li class="list-group-item">Player 1 <span class="badge">12</span></li>
                     <li class="list-group-item">Player 2 <span class="badge">5</span></li> 
                     <li class="list-group-item">Player 3 <span class="badge">3</span></li> 
                 </ul>
             </div>
+
             <div id="blackContainer" class="col-md-6 col-sm-12">
+                <div id="infoGame" class="col-lg-12 text-center">
+                    zqdsefrgthyuyjthrge
+                </div>
                 <div id="BlackCard" class="col-md-5">
                     sdfgbcuybefuyeu______
                 </div>

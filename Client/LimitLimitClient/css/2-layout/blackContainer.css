@@ -1,8 +1,8 @@
 #blackContainer {
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   color: white; }
   #blackContainer #BlackCard, #blackContainer #DragAndDrop {
     height: 350px;
@@ -23,5 +23,10 @@
     color: black; }
     #blackContainer #DragAndDrop.full {
       border: none; }
+  #blackContainer #infoGame {
+    width: 100%;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.3) !important;
+    padding: 15px;
+    margin-bottom: 20px; }
 
 /*# sourceMappingURL=blackContainer.css.map */
