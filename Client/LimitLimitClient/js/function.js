@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	var target = $('#DragAndDrop');
 
 	$('.whiteCard').dblclick(function(){
@@ -41,6 +42,16 @@ $(document).ready(function(){
 			$(this).appendTo("#DragAndDrop");
 		}
 	}
+
+	$( "#Menu" ).click(function() {
+	  $('#usersContainer').addClass('show');
+	  $('.fa-bars').hide();
+	});
+
+	$( "#Close" ).click(function() {
+	  $('#usersContainer').removeClass('show');
+	   $('.fa-bars').show();
+	});
 
 });
 

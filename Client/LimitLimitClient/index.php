@@ -7,18 +7,18 @@
         <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
         <link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.css" />
+        <link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.css" />
         <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
     <body>
+        <div id="Menu"><i  class="fa fa-bars fa-2x hidden-lg hidden-md"></i></div>
         <div class="container container-full">
-
-        <i class="fa fa-bars fa-2x"></i>
-
             <?php include 'views/login.php'; ?>
             <div id="usersContainer" class="col-xs-12 col-md-2">
                 <ul class="list-group">
-                    <li class="list-group-item model"><span class="name">Player 1</span> <span class="badge">0</span></li>
+                    <li class="list-group-item model"><span class="name">Player 1</span> <span class="badge">12</span></li>
                 </ul>
+                <i id="Close" class="fa fa-times fa-2x hidden-lg hidden-md"></i>
             </div>
 
             <div id="blackContainer" class="col-md-6 col-sm-12">
@@ -53,15 +53,11 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="lib/js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="lib/jquery-ui-1.12.1/jquery-ui.js"></script>
-        <script type="text/javascript" src="js/function.js"></script>
-
-        <script src="src/GameConfig.js"></script>
-        <script src="src/GameScene.js"></script>
-        <script src="src/Player.js"></script>
-        <script src="src/login.js"></script>
+        
         <script src="main.js"></script>
+        <script type="text/javascript" src="js/function.js"></script>
     </body>
 </html>
