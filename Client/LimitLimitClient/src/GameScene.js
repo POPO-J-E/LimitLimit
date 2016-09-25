@@ -19,6 +19,7 @@ EnterWorldScene.prototype = {
     textFieldUserNameCapton:null,
     currentPlayer:null,
     otherPlayers:[],
+    playerList:null,
 
     ctor:function (_jsondata) {
         this.jsonData = _jsondata;
@@ -86,7 +87,7 @@ EnterWorldScene.prototype = {
        }
        
     },
-    /*onCallbackMoveTo:function (nodeExecutingAction,player) {
+    onCallbackMoveTo:function (nodeExecutingAction,player) {
         //console.log("nodeExecutingAction id:"+nodeExecutingAction.playerid+"  :nodeExecutingAction.x:"+nodeExecutingAction.x+" nodeExecutingAction.y:"+nodeExecutingAction.y);
         //var activePlayerId = this.jsonData.activeplayerid;
         //if(activePlayerId !== this.currentPlayer.id)
@@ -219,6 +220,9 @@ EnterWorldScene.prototype = {
         _player.winnercards =  jsonObj.winnercards; 
         _player.numcardsleft =  jsonObj.numcardsleft; 
           
+    },
+    addPlayer:function(_player){
+
     },
     positionPlayer:function(_player)
     {

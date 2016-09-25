@@ -1,23 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>LimitLimit by DD-Society</title>
-    <link rel="icon" type="image/GIF" href="res/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <meta name="viewport" content="width=480, initial-scale=1">
-    <meta name="full-screen" content="yes"/>
-    <meta name="screen-orientation" content="portrait"/>
-    <meta name="x5-fullscreen" content="true"/>
-    <meta name="360-fullscreen" content="true"/>
-</head>
-<body>
-    <div class="container">
+    <head>
+        <title>Limite Limite</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div class="container container-full">
         <?php
-            include 'views/login.php';
-        ?>
-    </div>
-    <script src="lib/jquery-3.1.1.min.js"></script>
-    <script src="main.js"></script>
-</body>
+                include 'views/login.php';
+            ?>
+            <div id="usersContainer" class="col-md-2">
+                <ul class="list-group">
+                    <li class="list-group-item">Player 1 <span class="badge">12</span></li>
+                    <li class="list-group-item">Player 2 <span class="badge">5</span></li> 
+                    <li class="list-group-item">Player 3 <span class="badge">3</span></li> 
+                </ul>
+            </div>
+            <div id="blackContainer" class="col-md-6 col-sm-12">
+                <div id="BlackCard" class="col-md-5">
+                    sdfgbcuybefuyeu______
+                </div>
+                <div id="DragAndDrop" class="col-md-5 empty">
+                    
+                </div>
+            </div>
+            <div id="whiteContainer" class="col-md-4 col-sm-12">
+                <div id="whitehand">
+                    <div id="card1" class="whiteCard">
+                        eesrgthfyu
+                    </div>
+                    <div class="whiteCard">
+                        tfgc
+                    </div>
+                    <div class="whiteCard">
+                        rdtfgh
+                    </div>
+                    <div class="whiteCard">
+                        bdfghj
+                    </div>
+                    <div class="whiteCard">
+                        sgwdthfycjhgvhkb
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="lib/js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-ui-1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/function.js"></script>
+
+        <script src="main.js"></script>
+    </body>
 </html>
