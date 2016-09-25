@@ -20,15 +20,22 @@ body {
   align-items: center;
   flex-wrap: wrap; }
   .container #usersContainer {
-    height: 95%; }
+    height: 95%;
+    transition: margin-top 1s ease 0s; }
     .container #usersContainer .current {
       background-color: #97FF8F; }
 
-.fa-bars {
-  color: white;
+#Menu {
   position: absolute;
-  top: 5px;
-  left: 5px; }
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 9999999;
+  padding: 5px; }
+
+.fa {
+  color: white;
+  cursor: pointer; }
 
 #blackContainer {
   display: flex;
@@ -115,6 +122,9 @@ body {
     top: 5px;
     margin-top: -100%; }
 
+  #usersContainer.show {
+    margin-top: 0%; }
+
   #blackContainer {
     height: 60% !important; }
     #blackContainer #BlackCard, #blackContainer #DragAndDrop {
@@ -176,6 +186,9 @@ body {
           margin-top: -120px !important; }
         #whiteContainer #whitehand .whiteCard:nth-child(5) {
           margin-top: -120px !important; } }
+.model {
+  display: none; }
+
 .modal-login {
   background-color: #F2F2F2;
   border-radius: 10px;

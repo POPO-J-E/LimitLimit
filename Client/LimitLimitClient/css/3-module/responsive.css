@@ -6,6 +6,9 @@
     top: 5px;
     margin-top: -100%; }
 
+  #usersContainer.show {
+    margin-top: 0%; }
+
   #blackContainer {
     height: 60% !important; }
     #blackContainer #BlackCard, #blackContainer #DragAndDrop {
