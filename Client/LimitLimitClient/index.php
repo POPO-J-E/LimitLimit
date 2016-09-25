@@ -16,7 +16,7 @@
             <?php include 'views/login.php'; ?>
             <div id="usersContainer" class="col-xs-12 col-md-2">
                 <ul class="list-group">
-                    <li class="list-group-item model"><span class="name">Player 1</span> <span class="badge">12</span></li>
+                    <li class="list-group-item model"><span class="name">Player 1</span> <span class="badge">0</span></li>
                 </ul>
                 <i id="Close" class="fa fa-times fa-2x hidden-lg hidden-md"></i>
             </div>
@@ -57,6 +57,10 @@
         <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="lib/jquery-ui-1.12.1/jquery-ui.js"></script>
         
+        <script src="src/GameConfig.js"></script>
+        <script src="src/GameScene.js"></script>
+        <script src="src/Player.js"></script>
+        <script src="src/login.js"></script>
         <script src="main.js"></script>
         <script type="text/javascript" src="js/function.js"></script>
     </body>
