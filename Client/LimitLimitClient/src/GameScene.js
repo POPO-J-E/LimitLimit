@@ -1,11 +1,17 @@
-var spriteFrameCache = cc.spriteFrameCache;
+//var spriteFrameCache = cc.spriteFrameCache;
 var size = null;
 var MENU_TAG = 1;
 var CENTER_DECK = 2;
 var CARD = 3;
 var TEXT_INPUT_FONT_SIZE_PLAYER = 20;
- 
-var GameLayer = cc.Layer.extend({
+
+var EnterWorldScene = function(data)
+{
+    this.ctor(data);
+    this.onEnter();
+};
+
+EnterWorldScene.prototype = {
     cardDeckSprite:null,
     sprite:null,
     listener1:null,
@@ -13,6 +19,7 @@ var GameLayer = cc.Layer.extend({
     textFieldUserNameCapton:null,
     currentPlayer:null,
     otherPlayers:[],
+
     ctor:function (_jsondata) {
         this.jsonData = _jsondata;
         //after succesful login we want to take control on massages coming from server
@@ -20,27 +27,12 @@ var GameLayer = cc.Layer.extend({
         ws.onmessage = this.ongamestatus.bind(this);
         ws.onclose = this.onclose.bind(this);
         ws.onerror = this.onerror.bind(this);
-        
-        this._super();
-        size = cc.winSize;        
+          
         return true;
     },
      
-    onEnter:function () {
-         
-        this._super();   
-            // Make sprite1 touchable
-        this.listener1 = cc.EventListener.create({
-            event: cc.EventListener.TOUCH_ONE_BY_ONE,
-            swallowTouches: true,
-            onTouchBegan: function (touch, event) {
-                event.getCurrentTarget().invokeTurn(); 
-                return true;
-            },
-            onTouchEnded: function (touch, event) {
-                
-            }
-        });
+    onEnter:function () 
+    { 
         this.setUserObject(this.listener1);
         cc.eventManager.addListener(this.listener1, this);
         spriteFrameCache.addSpriteFrames(res.sprites_plist, res.sprites_png); 
@@ -57,17 +49,8 @@ var GameLayer = cc.Layer.extend({
         this.eventHandler(this.jsonData.event);
         
      },
-    onExit:function () {
-         
-        this._super();
-        spriteFrameCache.removeSpriteFramesFromFile(res.sprites_plist);
-        spriteFrameCache.removeSpriteFramesFromFile(res.sprites_png);
-        cc.eventManager.removeListener(this.listener1);
-    }, 
     eventHandler:function(event)
     {
-       
-        
         switch (event) {
             case Events.LOGIN_DONE:
             {
@@ -87,23 +70,23 @@ var GameLayer = cc.Layer.extend({
              
             }
         }
-        this.setTurnMassage();
+        this.setTurnMessage();
     },
-    setTurnMassage:function()
+    setTurnMessage:function()
     {
        var userName = this.jsonData.username;
        var activePlayerId = this.jsonData.activeplayerid;
        if(activePlayerId === this.currentPlayer.id)
        {
-           this.textFieldUserNameCapton.setString("Hello "+userName+" Its your turn"); 
+           this.textFieldUserNameCapton.html("Hello "+userName+" Its your turn"); 
        }
        else
        {
-           this.textFieldUserNameCapton.setString("Hello "+userName); 
+           this.textFieldUserNameCapton.html("Hello "+userName); 
        }
        
     },
-    onCallbackMoveTo:function (nodeExecutingAction,player) {
+    /*onCallbackMoveTo:function (nodeExecutingAction,player) {
         //console.log("nodeExecutingAction id:"+nodeExecutingAction.playerid+"  :nodeExecutingAction.x:"+nodeExecutingAction.x+" nodeExecutingAction.y:"+nodeExecutingAction.y);
         //var activePlayerId = this.jsonData.activeplayerid;
         //if(activePlayerId !== this.currentPlayer.id)
@@ -186,8 +169,7 @@ var GameLayer = cc.Layer.extend({
     },
     setupCurrentPlayer:function()
     {
-        this.currentPlayer = new Player(this.jsonData.id,this.jsonData.username,
-                                                        this.jsonData.activecardid);        
+        this.currentPlayer = new Player(this.jsonData.id,this.jsonData.username, this.jsonData.activecardid);        
         this.updatePlayer(this.currentPlayer,this.jsonData);      
         
         this.addChild(this.currentPlayer,1); 
@@ -258,14 +240,13 @@ var GameLayer = cc.Layer.extend({
             
         }
         
-    },
+    },*/
     ongamestatus:function(e) {
           console.log("GameScene->.ws.onmessage():"+e.data);
           if(e.data!==null || e.data !== 'undefined')
           { 
               this.jsonData = Decode(e.data);
               this.eventHandler(this.jsonData.event);
-              
          }
      }
      ,
@@ -277,21 +258,4 @@ var GameLayer = cc.Layer.extend({
 
     }
       
-});  
-
-
-var EnterWorldScene = cc.Scene.extend({    
-    session:null,
-    ctor:function (_session) {
-        this.session = _session;
-        this._super();
-        size = cc.winSize;        
-        return true;
-    },
-    onEnter:function () {
-        this._super();
-        var layer = new GameLayer(this.session);
-        this.addChild(layer);
-    }
-    
-});
+};  

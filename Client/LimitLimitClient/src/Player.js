@@ -2,8 +2,13 @@ var TEXT_INPUT_FONT_NAME = "Thonburi";
 var TEXT_INPUT_FONT_SIZE = 36;
 var TEXT_INPUT_FONT_SIZE_PLAYER = 20;
 
- var Player = cc.Sprite.extend({
-     
+var Player = function(_id,_username,_activecardid)
+{
+    this.ctor();
+}
+
+
+Player.prototype = {
     id:null,
     username:null,
     event:null,
@@ -30,9 +35,6 @@ var TEXT_INPUT_FONT_SIZE_PLAYER = 20;
         this.setPlayerNameCaption(this.username);
         this.setPlayerNumberOfCardsCaption(this.numcardsleft);
        
-    },
-    onExit:function () {        
-         this._super();      
     },
     getPlayerCardById:function(_cardId)
     {
@@ -74,7 +76,7 @@ var TEXT_INPUT_FONT_SIZE_PLAYER = 20;
     },
     
       
-});
+};
  
 
 
