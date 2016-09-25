@@ -1,0 +1,148 @@
+html, body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Montserrat", sans-serif; }
+
+body {
+  background: -moz-radial-gradient(center, ellipse cover, #828282 0%, black 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #828282 0%, black 100%);
+  background: radial-gradient(ellipse at center, #828282 0%, black 100%); }
+
+.container {
+  position: relative;
+  height: 100%; }
+
+#blackContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; }
+  #blackContainer #BlackCard, #blackContainer #DragAndDrop {
+    height: 350px;
+    width: 230px;
+    margin: 20px;
+    padding: 20px 15px 20px 15px;
+    border-radius: 10px; }
+  #blackContainer #BlackCard {
+    word-wrap: break-word;
+    background-color: #141414;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3); }
+  #blackContainer #DragAndDrop {
+    background-color: rgba(10, 10, 10, 0.1);
+    border: 8px dashed #3c3c3c;
+    padding: 0px;
+    height: 320px;
+    width: 230px;
+    color: black; }
+    #blackContainer #DragAndDrop.full {
+      border: none; }
+
+#whiteContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black; }
+  #whiteContainer #whitehand {
+    height: 90%;
+    width: 85%; }
+    #whiteContainer #whitehand .whiteCard {
+      word-wrap: break-word;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: all-scroll;
+      transition: all 0.3s ease 0s;
+      height: 320px;
+      width: 230px;
+      margin: 20px;
+      padding: 20px 15px 20px 15px;
+      background-color: white;
+      box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3); }
+      #whiteContainer #whitehand .whiteCard:nth-child(2) {
+        margin-top: -230px; }
+      #whiteContainer #whitehand .whiteCard:nth-child(3) {
+        margin-top: -230px; }
+      #whiteContainer #whitehand .whiteCard:nth-child(4) {
+        margin-top: -230px; }
+      #whiteContainer #whitehand .whiteCard:nth-child(5) {
+        margin-top: -230px; }
+      #whiteContainer #whitehand .whiteCard:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.3); }
+
+.whiteCard {
+  word-wrap: break-word;
+  height: 320px;
+  width: 230px;
+  margin: 0px;
+  padding: 20px 15px 20px 15px;
+  background-color: white;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 10px; }
+
+@media (max-width: 1000px) {
+  #blackContainer {
+    height: 60% !important; }
+    #blackContainer #BlackCard, #blackContainer #DragAndDrop {
+      height: 220px !important;
+      width: 200px !important; }
+      #blackContainer #BlackCard .whiteCard, #blackContainer #DragAndDrop .whiteCard {
+        height: 220px !important;
+        width: 200px !important; }
+
+  #whiteContainer {
+    height: 40% !important;
+    padding: 0px; }
+    #whiteContainer #whitehand {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap; }
+      #whiteContainer #whitehand .whiteCard {
+        height: 220px !important;
+        width: 200px !important;
+        margin: 0px !important; }
+        #whiteContainer #whitehand .whiteCard:nth-child(4) {
+          margin-top: -180px !important; }
+        #whiteContainer #whitehand .whiteCard:nth-child(5) {
+          margin-top: -180px !important; } }
+@media (max-width: 430px) {
+  #blackContainer {
+    height: 50% !important; }
+    #blackContainer #BlackCard, #blackContainer #DragAndDrop {
+      height: 130px !important;
+      width: 130px !important;
+      margin: 5px !important; }
+      #blackContainer #BlackCard .whiteCard, #blackContainer #DragAndDrop .whiteCard {
+        height: 130px !important;
+        width: 130px !important; }
+
+  #whiteContainer {
+    height: 50% !important;
+    padding: 0px; }
+    #whiteContainer #whitehand {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap; }
+      #whiteContainer #whitehand .whiteCard {
+        height: 130px !important;
+        width: 130px !important;
+        margin: 0px !important; }
+        #whiteContainer #whitehand .whiteCard:nth-child(3) {
+          margin-top: -120px !important; }
+        #whiteContainer #whitehand .whiteCard:nth-child(4) {
+          margin-top: -120px !important; }
+        #whiteContainer #whitehand .whiteCard:nth-child(5) {
+          margin-top: -120px !important; } }
+
+/*# sourceMappingURL=main.css.map */
