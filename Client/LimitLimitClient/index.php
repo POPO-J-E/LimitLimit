@@ -14,7 +14,7 @@
 
         <i class="fa fa-bars fa-2x"></i>
 
-        <!-- <?php include 'views/login.php'; ?> -->
+            <?php include 'views/login.php'; ?>
             <div id="usersContainer" class="col-xs-12 col-md-2">
                 <ul class="list-group">
                     <li class="list-group-item model"><span class="name">Player 1</span> <span class="badge">0</span></li>

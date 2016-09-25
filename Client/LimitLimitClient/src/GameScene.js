@@ -36,7 +36,7 @@ EnterWorldScene.prototype = {
     { 
         var userName = this.jsonData.username;
 
-        this.textFieldUserNameCaption = $('');
+        this.textFieldUserNameCaption = $('#infoGame');
         this.playerList = $('#usersContainer ul');
         
         this.eventHandler(this.jsonData.event);
@@ -66,7 +66,7 @@ EnterWorldScene.prototype = {
     },
     setMessage:function(_message)
     {
-        this.textFieldUserNameCapton.html(_message); 
+        this.textFieldUserNameCaption.html(_message); 
         console.log("CaptionMessage->"+_message);
     },
     setTurnMessage:function()

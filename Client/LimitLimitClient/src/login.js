@@ -75,8 +75,7 @@ var LoginLayer = function(user, btn)
 
     this.hide = function()
     {
-        alert('efezf');
-        $('container-login').hide();
+        $('.container-login').hide();
     }
 
     this.init();
