@@ -24,6 +24,6 @@ var onLoadingJsLoaded = function()
     var login = new LoginLayer('.input-username', '.input-login')
 };
 
-loadScript("src/GameConfig.js");
-loadScript("src/GameScene.js");
-loadScript("src/login.js", onLoadingJsLoaded);
+$( document ).ready(function() {
+    onLoadingJsLoaded();
+});

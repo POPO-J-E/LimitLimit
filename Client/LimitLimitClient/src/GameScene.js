@@ -7,7 +7,7 @@ var TEXT_INPUT_FONT_SIZE_PLAYER = 20;
 
 var EnterWorldScene = function(data)
 {
-    this.ctor(data);
+    this.init(data);
     this.onEnter();
 };
 
@@ -16,12 +16,12 @@ EnterWorldScene.prototype = {
     sprite:null,
     listener1:null,
     jsonData:null,
-    textFieldUserNameCapton:null,
+    textFieldUserNameCaption:null,
     currentPlayer:null,
     otherPlayers:[],
     playerList:null,
 
-    ctor:function (_jsondata) {
+    init:function (_jsondata) {
         this.jsonData = _jsondata;
         //after succesful login we want to take control on massages coming from server
         //so we attache this new callback function to the websocket onmessage
@@ -34,21 +34,12 @@ EnterWorldScene.prototype = {
      
     onEnter:function () 
     { 
-        this.setUserObject(this.listener1);
-        cc.eventManager.addListener(this.listener1, this);
-        spriteFrameCache.addSpriteFrames(res.sprites_plist, res.sprites_png); 
-           
         var userName = this.jsonData.username;
-        this.textFieldUserNameCapton = new cc.TextFieldTTF("Hello "+userName,
-            TEXT_INPUT_FONT_NAME,
-            TEXT_INPUT_FONT_SIZE_PLAYER);
-        this.textFieldUserNameCapton.setTextColor(cc.color.RED);
-        this.textFieldUserNameCapton.x = size.width / 2;
-        this.textFieldUserNameCapton.y = size.height-(TEXT_INPUT_FONT_SIZE_PLAYER+100);
-        this.addChild(this.textFieldUserNameCapton,10);  
+
+        this.textFieldUserNameCaption = $('');
+        this.playerList = $('#usersContainer ul');
         
         this.eventHandler(this.jsonData.event);
-        
      },
     eventHandler:function(event)
     {
@@ -66,12 +57,17 @@ EnterWorldScene.prototype = {
             }
             case Events.PLAY_DONE:
             {
-              this.setPlayState();
+              //this.setPlayState();
               break;
              
             }
         }
         this.setTurnMessage();
+    },
+    setMessage:function(_message)
+    {
+        this.textFieldUserNameCapton.html(_message); 
+        console.log("CaptionMessage->"+_message);
     },
     setTurnMessage:function()
     {
@@ -79,11 +75,11 @@ EnterWorldScene.prototype = {
        var activePlayerId = this.jsonData.activeplayerid;
        if(activePlayerId === this.currentPlayer.id)
        {
-           this.textFieldUserNameCapton.html("Hello "+userName+" Its your turn"); 
+           this.setMessage("Hello "+userName+" Its your turn"); 
        }
        else
        {
-           this.textFieldUserNameCapton.html("Hello "+userName); 
+           this.setMessage("Hello "+userName); 
        }
        
     },
@@ -173,8 +169,8 @@ EnterWorldScene.prototype = {
         this.currentPlayer = new Player(this.jsonData.id,this.jsonData.username, this.jsonData.activecardid);        
         this.updatePlayer(this.currentPlayer,this.jsonData);      
         
-        this.addChild(this.currentPlayer,1); 
-        this.positionPlayer(this.currentPlayer); 
+        this.addPlayer(this.currentPlayer, true);
+
         if(this.jsonData.players.length>0)
         {
             for(var i=0;i<this.jsonData.players.length;i++)
@@ -201,14 +197,13 @@ EnterWorldScene.prototype = {
     },
     setupOtherPlayer:function(inx)
     {
-        this.otherPlayers[inx] = new Player(this.jsonData.players[inx].id,
+        var player = new Player(this.jsonData.players[inx].id,
                                             this.jsonData.players[inx].username,
-                                            this.jsonData.players[inx].activecardid);      
+                                            this.jsonData.players[inx].activecardid);  
+        this.otherPlayers[inx] = player;
         this.updatePlayer(this.otherPlayers[inx],this.jsonData.players[inx]);
         
-        this.addChild(this.otherPlayers[inx],1); 
-        this.positionPlayer(this.otherPlayers[inx]); 
-        
+        this.addPlayer(player);
     },
     updatePlayer:function(_player,jsonObj)
     {
@@ -219,32 +214,16 @@ EnterWorldScene.prototype = {
         _player.winner =  jsonObj.winner; 
         _player.winnercards =  jsonObj.winnercards; 
         _player.numcardsleft =  jsonObj.numcardsleft; 
-          
     },
-    addPlayer:function(_player){
-
+    addPlayer:function(_player, current = false){
+        $model = this.playerList.find('.model');
+        $player = $model.clone();
+        $player.removeClass('model');
+        if(current)
+            $player.addClass('current');
+        _player.setObject($player);
+        this.playerList.append($player);
     },
-    positionPlayer:function(_player)
-    {
-        if(_player.registertionnum === 0)
-        {
-            _player.attr({
-                x: (cc.winSize.width / 2) + 150,
-                y: (cc.winSize.height / 2)
-            });
-            
-        }
-        
-        else if (_player.registertionnum === 1)
-        {
-            _player.attr({
-                x: (cc.winSize.width / 2) - 150,
-                y: (cc.winSize.height / 2)
-            });
-            
-        }
-        
-    },*/
     ongamestatus:function(e) {
           console.log("GameScene->.ws.onmessage():"+e.data);
           if(e.data!==null || e.data !== 'undefined')

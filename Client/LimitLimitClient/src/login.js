@@ -38,8 +38,6 @@ var LoginLayer = function(user, btn)
         {
             this.removeChildByTag(TEXT_FIELD_ERR);
         }*/
-        enterWorldScene = new EnterWorldScene();
-                           enterWorldScene.run();
         //check login in the server 
         var txtUserName = this.textFieldUserName.val();
         var config = {
@@ -50,9 +48,7 @@ var LoginLayer = function(user, btn)
         try {
             ws = new WebSocket("ws://localhost:8888/ws"); 
             ws.onopen = function() {
-                                    
                     ws.send(message);
-                
             };
             ws.onmessage = function (e) {
                 console.log("app->srv.ws.onmessage():"+e.data);
@@ -61,7 +57,8 @@ var LoginLayer = function(user, btn)
                       var jsonFromClient = Decode(e.data);
                       if(jsonFromClient.event === Events.LOGIN_DONE)
                       {
-                           enterWorldScene = new EnterWorldScene(jsonFromClient);
+                            enterWorldScene = new EnterWorldScene(jsonFromClient);
+                            login.hide();
                       }
                 }
             };
@@ -75,6 +72,12 @@ var LoginLayer = function(user, btn)
             console.error('Sorry, the web socket at "%s" is un-available', url);
         }
     };
+
+    this.hide = function()
+    {
+        alert('efezf');
+        $('container-login').hide();
+    }
 
     this.init();
 };

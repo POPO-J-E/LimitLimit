@@ -9,6 +9,11 @@
     display: none;
 }
 
+.model
+{
+    display: none;
+}
+
 .modal-login
 {
     background-color: #F2F2F2;
@@ -20,7 +25,6 @@
     -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
-   
 }
 
 .modal-login label
@@ -47,4 +51,9 @@
 .form-login
 {
     padding: 15px;
+}
+
+.current
+{
+    background-color: #97FF8F;
 }
