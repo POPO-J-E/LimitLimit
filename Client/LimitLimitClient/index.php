@@ -17,9 +17,7 @@
         <!-- <?php include 'views/login.php'; ?> -->
             <div id="usersContainer" class="col-xs-12 col-md-2">
                 <ul class="list-group">
-                    <li class="list-group-item">Player 1 <span class="badge">12</span></li>
-                    <li class="list-group-item">Player 2 <span class="badge">5</span></li> 
-                    <li class="list-group-item">Player 3 <span class="badge">3</span></li> 
+                    <li class="list-group-item model"><span class="name">Player 1</span> <span class="badge">0</span></li>
                 </ul>
             </div>
 
@@ -60,6 +58,10 @@
         <script type="text/javascript" src="lib/jquery-ui-1.12.1/jquery-ui.js"></script>
         <script type="text/javascript" src="js/function.js"></script>
 
+        <script src="src/GameConfig.js"></script>
+        <script src="src/GameScene.js"></script>
+        <script src="src/Player.js"></script>
+        <script src="src/login.js"></script>
         <script src="main.js"></script>
     </body>
 </html>

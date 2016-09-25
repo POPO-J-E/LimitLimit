@@ -21,6 +21,8 @@ body {
   flex-wrap: wrap; }
   .container #usersContainer {
     height: 95%; }
+    .container #usersContainer .current {
+      background-color: #97FF8F; }
 
 .fa-bars {
   color: white;

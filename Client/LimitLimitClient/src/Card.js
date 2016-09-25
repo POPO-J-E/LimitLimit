@@ -4,7 +4,7 @@ var TEXT_INPUT_FONT_SIZE_PLAYER = 20;
 
 var Card = function(_game, _id, _text, _white = true)
 {
-    this.ctor(_game, _id, _text, _white);
+    this.init(_game, _id, _text, _white);
 }
 
 Card.prototype = {
@@ -14,7 +14,7 @@ Card.prototype = {
     htmlObject:null,
     game:null,
 
-    ctor: function(_game, _id, _text, _white){      
+    init: function(_game, _id, _text, _white){      
         this.game = _game;  
         this.id = _id;
         this.text = _text;
