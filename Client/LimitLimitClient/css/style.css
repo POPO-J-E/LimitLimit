@@ -1,4 +1,4 @@
-.container-full {
+/*.container-full {
   margin: 0 auto;
   width: 100%;
   padding: 0;
@@ -56,4 +56,10 @@
 .current
 {
     background-color: #97FF8F;
+}*/
+
+#whiteContainer #whitehand.cantplay .whiteCard
+{
+    background-color: #787878;
+    cursor: not-allowed;
 }

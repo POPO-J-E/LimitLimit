@@ -43,15 +43,7 @@ $(document).ready(function(){
 		}
 	}
 
-	$( "#Menu" ).click(function() {
-	  $('#usersContainer').addClass('show');
-	  $('.fa-bars').hide();
-	});
-
-	$( "#Close" ).click(function() {
-	  $('#usersContainer').removeClass('show');
-	   $('.fa-bars').show();
-	});
+	
 
 });
 

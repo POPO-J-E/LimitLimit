@@ -9,21 +9,31 @@
         <link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.css" />
         <link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.css" />
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
     <body>
         <div id="Menu"><i  class="fa fa-bars fa-2x hidden-lg hidden-md"></i></div>
         <div class="container container-full">
-            <?php include 'views/login.php'; ?>
+            <div class="container-login">
+                <div class="modal-login">
+                    <div class="header-login">Welcome to Limit Limit</div>
+                    <div class="form-login form-group form-inline">
+                        <label for="uname">Username</label>
+                        <input type="text" class="form-control input-username" placeholder="Enter Username" id="uname" name="uname" required>
+                        <button type="submit" class="input-login btn btn-primary">Login</button>
+                    </div>
+                </div>
+            </div>
             <div id="usersContainer" class="col-xs-12 col-md-2">
                 <ul class="list-group">
-                    <li class="list-group-item model"><span class="name">Player 1</span> <span class="badge">0</span></li>
+                    <li class="list-group-item model"><span class="played glyphicon glyphicon-remove"></span> <span class="name">Player 1</span> <span class="score badge">0</span></li>
                 </ul>
                 <i id="Close" class="fa fa-times fa-2x hidden-lg hidden-md"></i>
             </div>
 
             <div id="blackContainer" class="col-md-6 col-sm-12">
-                <div id="infoGame" class="col-lg-12 text-center">
-                    zqdsefrgthyuyjthrge
+                <div id="infoGame" class="col-md-12 text-center">
+                        zqdsefrgthyuyjthrge
                 </div>
                 <div id="BlackCard" class="col-md-5">
                     sdfgbcuybefuyeu______
@@ -31,10 +41,13 @@
                 <div id="DragAndDrop" class="col-md-5 empty">
                     
                 </div>
+                <div id="actions" class="col-md-12 text-center">
+                    <a href="#" id='sender' class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span> Play</a>
+                </div>
             </div>
             <div id="whiteContainer" class="col-md-4 col-sm-12">
                 <div id="whitehand">
-                    <div id="card1" class="whiteCard">
+                    <div class="whiteCard">
                         eesrgthfyu
                     </div>
                     <div class="whiteCard">
@@ -60,8 +73,9 @@
         <script src="src/GameConfig.js"></script>
         <script src="src/GameScene.js"></script>
         <script src="src/Player.js"></script>
+        <script src="src/Card.js"></script>
         <script src="src/login.js"></script>
         <script src="main.js"></script>
-        <script type="text/javascript" src="js/function.js"></script>
+        <!--<script type="text/javascript" src="js/function.js"></script>-->
     </body>
 </html>

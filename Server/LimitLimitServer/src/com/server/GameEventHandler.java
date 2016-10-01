@@ -1,29 +1,26 @@
 package com.server;
 
-import java.util.ArrayList;
-
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.logging.Logger;
 
-import com.json.JSONArray;
 import com.json.JSONObject;
+import com.server.game.Card;
+import com.server.game.GameManager;
+import com.server.game.Player;
 
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
-import io.netty.util.AttributeKey;
+
 //this class will handle all the request / response logic and game protocol 
 public class GameEventHandler {
 	private final static Logger LOG = LoggerManager.GetLogger(GameEventHandler.class.getName());
+	
 	private GameManager gameManager; 
+	
 	private static int playerIdCounter = 0;
 	private static int playerRegistretionCounter = 0;
+	
 	public GameEventHandler(GameManager _gameManager)
 	{
 		this.gameManager = _gameManager;
-		 
 	}
 	
 	public int handleEvent(String _jsonRequest,Channel channel)
@@ -36,23 +33,20 @@ public class GameEventHandler {
     	{
         	case Config.LOGIN: 
         	{		        		 
-        		Player newPlayer = setPlayerNewAttributes(userName,channel,Config.LOGIN_DONE);
+        		Player newPlayer = setPlayerNewAttributes(userName,channel/*,Config.LOGIN_DONE*/);
         		setPlayerInPlayersContainer(newPlayer);
         		playerId = newPlayer.getId();
         		break;
         	}
-        	case Config.PLAY:
-        	{
-        		playerId = invokePlayEvent(jsonObject);
-        		
-        	}
+        	default:
+        		playerId = jsonObject.getInt("id");	
     	}
 	        	
 	    return playerId;
  	}
 	
 	
-	public boolean ResponseDispatcher(int _playerId,String _jsonRequest)
+	public boolean dispatcheEvent(Player player, String _jsonRequest)
 	{
 		JSONObject jsonObject = new JSONObject(_jsonRequest);
 		int Event = jsonObject.getInt("event");
@@ -61,12 +55,14 @@ public class GameEventHandler {
     	{
         	case Config.LOGIN: 
         	{		        		 
-        		bDone = this.gameManager.getGameResponseDispatcher().ResponseDispatcheLoginDone(_playerId);
+        		bDone = this.gameManager.getEventDispatcher().loginDone(player);
+        		
         		break;
         	}
         	case Config.PLAY:
         	{
-        		bDone = this.gameManager.getGameResponseDispatcher().ResponseDispatchePlayDone(_playerId); 
+        		Card card = Card.fromJSON(jsonObject.getJSONObject("playedcard"));
+        		bDone = this.gameManager.getEventDispatcher().playDone(player, card); 
         		break;
         	}
     	}
@@ -77,7 +73,7 @@ public class GameEventHandler {
 	
 	
 	 
-	private int invokePlayEvent(JSONObject _jsonObject)
+	/*private int invokePlayEvent(JSONObject _jsonObject)
 	{
 		int activePlayerId  = _jsonObject.getInt("id");
 		int currentPlayerID = this.gameManager.getPlayers().get(activePlayerId).getActiveplayerid();
@@ -205,56 +201,9 @@ public class GameEventHandler {
 			activePlayerId =-1;
 		}
 		return activePlayerId;
-	}
-	private String CardsArrayToString(String[] cardsPrev,String[] cardsCurrent)
-	{
-		String result ="";
-		for (String s: cardsPrev) {           
-	        //Do your stuff here
-			result+=s;
-			result+="_";
-					
-	    }
-		for (String s: cardsCurrent) {           
-	        //Do your stuff here
-			result+=s;
-			result+="_";
-					
-	    }
-		result = result.substring(0, result.length()-1);
-		return result;
-	}
-	private String[] getWarCards(int playerID)
-	{
-		 
-		String prevPlayerCardId_1 = this.gameManager.getPlayerByIndex(playerID).getPlayerCards().getFirst();
-		this.gameManager.getPlayerByIndex(playerID).getPlayerCards().removeFirst();
-		String prevPlayerCardId_2 = this.gameManager.getPlayerByIndex(playerID).getPlayerCards().getFirst();
-		this.gameManager.getPlayerByIndex(playerID).getPlayerCards().removeFirst();
-		String prevPlayerCardId_3 = this.gameManager.getPlayerByIndex(playerID).getPlayerCards().getFirst();
-		this.gameManager.getPlayerByIndex(playerID).getPlayerCards().removeFirst();
-		//the fourth card is to play the war
-		String prevPlayerCardId_4 = this.gameManager.getPlayerByIndex(playerID).getPlayerCards().getFirst();
-		this.gameManager.getPlayerByIndex(playerID).getPlayerCards().removeFirst();
-		
-		return new String[]{prevPlayerCardId_1, prevPlayerCardId_2,prevPlayerCardId_3,prevPlayerCardId_4};
-	}
-	private int getPreviousePlayerIndex(int _currentPlayerID)
-	{
-		//find out who is the previous player
-		int playerInx = this.gameManager.getPlayerIndexByKey(_currentPlayerID);
-		if(playerInx == 0)
-		{
-			int playerSize = this.gameManager.getPlayers().size();
-			playerInx = playerSize-1;
-		}
-		else
-		{
-			--playerInx;
-		}
-		return playerInx;
-	}
-	private Player setPlayerNewAttributes(String _userName,Channel channel,int nextEvent)
+	}*/
+	
+	private Player setPlayerNewAttributes(String _userName, Channel channel/*, int nextEvent*/)
 	{
 		Player newPlayer = new Player(channel);
 		newPlayer.setUserName(_userName);
@@ -262,9 +211,7 @@ public class GameEventHandler {
 		int count = getPlayerRegistretionCounter();
 		newPlayer.setRegistertionNum(count);
 		newPlayer.setId(id);
-		newPlayer.setEvent(nextEvent);
-		setPlayerCards(newPlayer);
-		setNewPlayerCardId(newPlayer);
+		//newPlayer.setEvent(nextEvent);
 		return newPlayer;
 	}
 	
@@ -273,47 +220,22 @@ public class GameEventHandler {
 		this.gameManager.getPlayers().put(_player.getId(), _player);
 	}
 	
-	private void setPlayerCards(Player _player)
-	{
-		//this is only good for 2 players 
-		int len = this.gameManager.getCardsRandomize().length-1;
-		if(_player.getId()==0)
-		{			
-			for(int i=0;i<(len/2);i++)
-			{
-				_player.getPlayerCards().push(this.gameManager.getCardsRandomizeByIndex(i));
-			}
-		}
-		else if(_player.getId()==1)
-		{
-			for(int i=len;i>(len/2);i--)
-			{
-				_player.getPlayerCards().push(this.gameManager.getCardsRandomizeByIndex(i));
-			}
-		}
-			
-		
-	}
-	
-	 
-	private void setNewPlayerCardId(Player _player)
-	{
-		String cardId = _player.getPlayerCards().removeFirst();
-		_player.setActivecardid(cardId);
-	}
-	
 	private int GenerateUniqueId()
 	{
-		int id = this.playerIdCounter;
-		this.playerIdCounter++;
+		int id = GameEventHandler.playerIdCounter;
+		GameEventHandler.playerIdCounter++;
 		return id;
 	}
 	
 	private int getPlayerRegistretionCounter()
 	{
-		int count = this.playerRegistretionCounter;
-		this.playerRegistretionCounter++;
+		int count = GameEventHandler.playerRegistretionCounter;
+		GameEventHandler.playerRegistretionCounter++;
 		return count;
+	}
+
+	public void beginGame() {
+			gameManager.getEventDispatcher().beginGame();
 	}
 	 
 }

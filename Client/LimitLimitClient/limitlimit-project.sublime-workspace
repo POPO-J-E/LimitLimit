@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"a",
+				"applyClick〔function〕"
+			],
+			[
+				"add",
+				"addClass〔function〕"
+			],
+			[
+				"send",
+				"sendCard"
+			],
+			[
+				"cl",
+				"click〔function〕"
+			],
+			[
+				"set",
+				"setupBlackCard〔function〕"
+			],
+			[
+				"bla",
+				"blackCardHtml"
+			],
+			[
+				"car",
+				"cardHtml〔variable〕"
+			],
+			[
+				"h",
+				"whiteHand〔variable〕"
+			],
+			[
+				"alert",
+				"alert('sfsed"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"w",
+				"white"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
 				"ve",
 				"views/"
 			],
@@ -14,10 +86,6 @@
 			[
 				"u",
 				"url()"
-			],
-			[
-				"ba",
-				"background-image"
 			],
 			[
 				"remo",
@@ -40,10 +108,6 @@
 				"padding-right"
 			],
 			[
-				"pad",
-				"padding-left"
-			],
-			[
 				"ma",
 				"margin-left"
 			],
@@ -54,10 +118,6 @@
 			[
 				"foto",
 				"fotorama_extension"
-			],
-			[
-				"marg",
-				"margin-bottom"
 			],
 			[
 				"Med",
@@ -120,10 +180,6 @@
 				"inline-block"
 			],
 			[
-				"bac",
-				"background-size"
-			],
-			[
 				"spa",
 				"space-between"
 			],
@@ -172,10 +228,6 @@
 				"clickLink〔function〕"
 			],
 			[
-				"th",
-				"theClass"
-			],
-			[
 				"re",
 				"removeClass〔function〕"
 			],
@@ -186,10 +238,6 @@
 			[
 				"fa",
 				"fadeOut"
-			],
-			[
-				"a",
-				"article"
 			],
 			[
 				"get",
@@ -216,10 +264,6 @@
 				"font-size"
 			],
 			[
-				"h",
-				"height"
-			],
-			[
 				"pos",
 				"position"
 			],
@@ -230,10 +274,6 @@
 			[
 				"form_",
 				"form_widget"
-			],
-			[
-				"w",
-				"webPath"
 			],
 			[
 				"find",
@@ -254,10 +294,6 @@
 			[
 				"lo",
 				"logo_dir〔variable〕"
-			],
-			[
-				"fun",
-				"function"
 			],
 			[
 				"font",
@@ -311,6 +347,70 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/cards.js",
+			"settings":
+			{
+				"buffer_size": 1456,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Card.js",
+			"settings":
+			{
+				"buffer_size": 1132,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Player.js",
+			"settings":
+			{
+				"buffer_size": 1239,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 3767,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/function.js",
+			"settings":
+			{
+				"buffer_size": 1032,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/GameScene.js",
+			"settings":
+			{
+				"buffer_size": 11208,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/style.css",
+			"settings":
+			{
+				"buffer_size": 916,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/GameConfig.js",
+			"settings":
+			{
+				"buffer_size": 772,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -413,14 +513,32 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient"
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/css",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/views"
 	],
 	"file_history":
 	[
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/views/login.php",
-		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/main.js",
-		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/index.php",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/login.js",
+		"/C/Users/kifkif/AppData/Local/Temp/Rar$DIa0.122/loading.js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/GameConfig.js",
+		"/C/Users/kifkif/AppData/Roaming/Sublime Text 3/Packages/JsFormat/Default (Windows).sublime-keymap",
+		"/C/Users/kifkif/AppData/Local/Temp/Rar$EXa0.048/multiplayer_cocos2dx-js_using_netty_websockets-master/Client/WarCardJS/index.html",
+		"/C/Users/kifkif/AppData/Local/Temp/Rar$DIa0.858/main.js",
+		"/D/Programmes/Logiciels/wamp/www/ImagickTest/index.php",
+		"/D/Programmes/Logiciels/wamp/www/ImagickTest/vendor/autoload.php",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/index.php",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/main.js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/Player.js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/GameScene.js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/css/style.css",
+		"/D/Programmes/Logiciels/ImageMagick-7.0.3-Q16/index.html",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/Card.js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/resource.js",
+		"/D/Documents/Projets/LimitLimit/Client/Web/index.html",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/index.html",
 		"/D/Programmes/Logiciels/wamp/bin/apache/apache2.4.9/conf/extra/httpd-vhosts.conf",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/app.js",
@@ -442,7 +560,6 @@
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitJS/src/cards.js",
 		"/C/Users/kifkif/AppData/Local/Temp/Rar$DIa0.520/project.json",
 		"/C/Users/kifkif/AppData/Local/Temp/Rar$DIa0.338/cocos-project-template.json",
-		"/C/Users/kifkif/AppData/Roaming/Sublime Text 3/Packages/JsFormat/Default (Windows).sublime-keymap",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitJS/.cocos-project.json",
 		"/D/Programmes/Logiciels/wamp/www/SocamSARL/src/Socam/CoreBundle/Entity/AlbumHasMedia.php",
 		"/D/Programmes/Logiciels/wamp/www/SocamSARL/web/css/design.css",
@@ -531,20 +648,7 @@
 		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Provider/FileProvider.php",
 		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Resources/config/provider.xml",
 		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Provider/ImageProvider.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/admin-bundle/Controller/CRUDController.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Admin/ORM/MediaAdmin.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Provider/VimeoProvider",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Resources/config/doctrine_orm.xml",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Tests/Provider/ImageProviderTest.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/src/BDA/AdminBundle/Admin/PartnerAdmin.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/admin-bundle/Admin/AbstractAdmin.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Listener/ORM/MediaEventSubscriber.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Resources/config/gaufrette.xml",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Controller/Controller.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/src/BDA/CoreBundle/Entity/Partner.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Form/Type/MediaType.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Controller/Api/GalleryController.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Model/Media.php"
+		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/admin-bundle/Controller/CRUDController.php"
 	],
 	"find":
 	{
@@ -563,6 +667,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"eventHandler",
+			"listener1",
+			"=",
+			";",
+			"public static final int  ",
+			"setplayerna",
+			"ws",
 			"direct",
 			"renam",
 			"corps",
@@ -683,11 +794,7 @@
 			"micro",
 			"game",
 			"article",
-			"user",
-			"}",
-			"ctrl+shift+x",
-			"ctrl+shift+<",
-			"ctrl+shift+w"
+			"user"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -695,6 +802,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			":",
+			",",
+			"",
 			"lg",
 			"md",
 			"sm",
@@ -714,8 +824,270 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/cards.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1456,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 0,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/Card.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1132,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								286,
+								296
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 13,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Player.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								807,
+								807
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 35,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2353,
+								2353
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 44,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/function.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1032,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								759,
+								1019
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 33,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/GameScene.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11208,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9964,
+								9964
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 317,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4332.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 916,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								856,
+								856
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 60,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/GameConfig.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 772,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								472,
+								472
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 19,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -758,7 +1130,7 @@
 	"project": "limitlimit-project.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

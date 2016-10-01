@@ -12,14 +12,23 @@ var EnterWorldScene = function(data)
 };
 
 EnterWorldScene.prototype = {
-    cardDeckSprite:null,
-    sprite:null,
-    listener1:null,
     jsonData:null,
-    textFieldUserNameCaption:null,
+    textFieldUserNameCaption:null, //html
     currentPlayer:null,
     otherPlayers:[],
-    playerList:null,
+    playerList:null, //html
+
+    hand:[],
+    whiteHand:null, //html
+
+    blackCard:null,
+    blackCardHtml:null, //html
+
+    selectedCard:null,
+    target:null, //html
+    sender:null, //html
+
+    canPlay:true,
 
     init:function (_jsondata) {
         this.jsonData = _jsondata;
@@ -38,6 +47,28 @@ EnterWorldScene.prototype = {
 
         this.textFieldUserNameCaption = $('#infoGame');
         this.playerList = $('#usersContainer ul');
+
+        this.whiteHand = $('#whitehand');
+        this.blackCardHtml = $('#BlackCard');
+
+        this.target = $('#DragAndDrop');
+        this.sender = $('#sender');
+        var game = this;
+        this.sender.click(function(){
+            game.sendCard();
+        })
+
+        $( "#Menu" ).click(function() {
+          $('#usersContainer').addClass('show');
+          $('.fa-bars').hide();
+        });
+
+        $( "#Close" ).click(function() {
+          $('#usersContainer').removeClass('show');
+           $('.fa-bars').show();
+        });
+
+        this.enablePlays(false);
         
         this.eventHandler(this.jsonData.event);
      },
@@ -51,13 +82,31 @@ EnterWorldScene.prototype = {
             }
             case Events.NEW_USER_LOGIN_DONE:
             {
-              this.setupOtherPlayerS();
+              this.setupNewPlayer();
+              break;
+             
+            }
+            case Events.NEW_TURN:
+            {
+              this.setupNewTurn();
+              break;
+             
+            }
+            case Events.NEW_TURN_WINNER:
+            {
+              this.setupNewTurnWinner();
               break;
              
             }
             case Events.PLAY_DONE:
             {
-              //this.setPlayState();
+              this.onPlayDone();
+              break;
+             
+            }
+            case Events.USER_PLAY_DONE:
+            {
+              this.onUserPlayDone();
               break;
              
             }
@@ -166,61 +215,55 @@ EnterWorldScene.prototype = {
     },
     setupCurrentPlayer:function()
     {
-        this.currentPlayer = new Player(this.jsonData.id,this.jsonData.username, this.jsonData.activecardid);        
-        this.updatePlayer(this.currentPlayer,this.jsonData);      
+        this.currentPlayer = new Player(this.jsonData.id,this.jsonData.username, this.jsonData.score);        
         
         this.addPlayer(this.currentPlayer, true);
+        this.updatePlayer(this.currentPlayer,this.jsonData);
 
         if(this.jsonData.players.length>0)
         {
             for(var i=0;i<this.jsonData.players.length;i++)
             {
-                if(this.jsonData.players[i].event === Events.NEW_USER_LOGIN_DONE)
-                {
-                    this.setupOtherPlayer(i);
-                }
+                this.setupOtherPlayer(i);
             } 
         }     
-    },
-    setupOtherPlayerS:function()
-    {
-        if(this.jsonData.players.length>0)
-        {
-            for(var i=0;i<this.jsonData.players.length;i++)
-            {
-                if(this.jsonData.players[i].event === Events.LOGIN_DONE)
-                {
-                    this.setupOtherPlayer(i);
-                }
-            } 
-        }
     },
     setupOtherPlayer:function(inx)
     {
         var player = new Player(this.jsonData.players[inx].id,
                                             this.jsonData.players[inx].username,
-                                            this.jsonData.players[inx].activecardid);  
-        this.otherPlayers[inx] = player;
-        this.updatePlayer(this.otherPlayers[inx],this.jsonData.players[inx]);
+                                            this.jsonData.players[inx].score);  
         
         this.addPlayer(player);
+        this.updatePlayer(this.otherPlayers[inx],this.jsonData.players[inx]);
+    },
+    setupNewPlayer:function()
+    {
+        var newPlayer = new Player(this.jsonData.newplayer.id,this.jsonData.newplayer.username, this.jsonData.newplayer.score);
+        
+        this.addPlayer(newPlayer);
+        this.updatePlayer(newPlayer,this.jsonData);
     },
     updatePlayer:function(_player,jsonObj)
     {
-        _player.activeplayerid = jsonObj.activeplayerid;
+        _player.update(jsonObj);
+        /*_player.activeplayerid = jsonObj.activeplayerid;
         _player.activecardid =  jsonObj.activecardid;
         _player.event =  jsonObj.event;
         _player.registertionnum =  jsonObj.registertionnum; 
         _player.winner =  jsonObj.winner; 
         _player.winnercards =  jsonObj.winnercards; 
-        _player.numcardsleft =  jsonObj.numcardsleft; 
+        _player.numcardsleft =  jsonObj.numcardsleft;*/ 
     },
-    addPlayer:function(_player, current = false){
+    addPlayer:function(_player, current = false)
+    {
         $model = this.playerList.find('.model');
         $player = $model.clone();
         $player.removeClass('model');
         if(current)
             $player.addClass('current');
+        else
+            this.otherPlayers[_player.id] = _player;
         _player.setObject($player);
         this.playerList.append($player);
     },
@@ -231,14 +274,137 @@ EnterWorldScene.prototype = {
               this.jsonData = Decode(e.data);
               this.eventHandler(this.jsonData.event);
          }
-     }
-     ,
-    
+     },
+
+    setupNewTurn:function()
+    {
+        /*var newPlayer = new Player(this.jsonData.newplayer.id,this.jsonData.newplayer.username, this.jsonData.newplayer.score);
+        
+        this.addPlayer(newPlayer);
+        this.updatePlayer(newPlayer,this.jsonData);*/
+        this.setupTurn();
+        this.enablePlays(true);
+    },
+    setupNewTurnWinner:function()
+    {
+        this.setupTurn();
+    },
+    setupTurn:function()
+    {
+        this.setupHand();
+        this.setupBlackCard();
+    },
+    setupHand:function()
+    {
+        '<div class="whiteCard"></div>'
+        if(this.jsonData.hand.length>0)
+        {
+            this.hand = [];
+            this.whiteHand.html('');
+
+            for(var i=0;i<this.jsonData.hand.length;i++)
+            {
+                this.addCardToHand(i);
+            } 
+        }     
+    },
+    addCardToHand:function(i)
+    {
+        var card = new Card(this, this.jsonData.hand[i].id, this.jsonData.hand[i].message);
+        this.hand[card.id] = card;
+
+        var cardHtml = $('<div class="whiteCard"></div>').html(card.message);
+        card.setHtml(cardHtml);
+        this.whiteHand.append(cardHtml);
+    },
+    setupBlackCard:function()
+    {
+        var card = new Card(this, this.jsonData.blackcard.id, this.jsonData.blackcard.message, false);
+        this.blackCard = card;
+
+        this.blackCardHtml.html(card.message);
+    },
+    applyClick:function(card)
+    {
+        if(this.canPlay)
+        {
+            if(this.target.hasClass("empty")){
+                card.htmlObject.appendTo(this.target);
+                this.target.removeClass("empty");
+                this.target.addClass("full");
+            }
+            else{
+                this.selectedCard.htmlObject.appendTo(this.whiteHand);
+                card.htmlObject.appendTo(this.target);
+            }
+            this.selectedCard = card;
+        }
+    },
+    sendCard:function()
+    {
+        if(this.canPlay)
+        {
+            if(this.selectedCard != null)
+            {
+                this.sendMessage("Selected a card.");
+                var data = {};
+                data['playedcard'] = this.selectedCard.toArray();
+                this.sendPacket(Events.PLAY, data);
+                this.enablePlays(false);
+            }
+            else
+                this.sendMessage("Select a card before.");
+        }
+        else
+        {
+            this.sendMessage("You can not play.");
+        }
+    },
+    sendMessage:function(message)
+    {
+        //TODO
+        //alert(message);
+        console.log(message);
+    },
+    sendPacket(event, data)
+    {
+        data['event'] = event;
+        data['id'] = this.currentPlayer.id;
+        data['username'] = this.currentPlayer.username;
+        var message = Encode(data);
+        alert(message);
+        try {
+            ws.send(message);
+        } catch (e) {
+            console.error('Sorry, the web socket at "%s" is un-available', url);
+        }
+    },
     onclose:function (e) {
 
     },
     onerror:function (e) {
 
-    }
-      
+    },
+    enablePlays:function(_bool)
+    {
+        
+        if(_bool && this.canPlay == false)
+        {
+            this.whiteHand.removeClass('cantplay');
+            this.canPlay = true;
+        }
+        else if(!_bool && this.canPlay != false)
+        {
+            this.whiteHand.addClass('cantplay');
+            this.canPlay = false;
+        }
+    },
+    onPlayDone:function()
+    {
+        this.sendMessage('on play done');
+    },
+    onUserPlayDone:function()
+    {
+        this.sendMessage('on user play done');
+    },
 };  

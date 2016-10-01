@@ -8,6 +8,8 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
+import com.server.game.GameManager;
+
 public class GameServerInitializer extends ChannelInitializer<Channel> {
 	private final GameManager gameManager; 
 	
@@ -22,9 +24,6 @@ public class GameServerInitializer extends ChannelInitializer<Channel> {
         pipeline.addLast("HttpObjectAggregator",new HttpObjectAggregator(64 * 1024));
         pipeline.addLast("ChunkedWriteHandler",new ChunkedWriteHandler());
         pipeline.addLast("WebSocketServerProtocolHandler",new WebSocketServerProtocolHandler("/ws"));
-        pipeline.addLast("TextWebSocketFrameHandler",new TextWebSocketFrameHandler(gameManager,
-        												new GameEventHandler(gameManager)));
-        												    
-        
+        pipeline.addLast("TextWebSocketFrameHandler",new TextWebSocketFrameHandler(gameManager, new GameEventHandler(gameManager)));
     }
 }
