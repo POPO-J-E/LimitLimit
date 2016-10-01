@@ -62,11 +62,13 @@ body {
     color: black; }
     #blackContainer #DragAndDrop.full {
       border: none; }
-  #blackContainer #infoGame {
-    width: 100%;
-    border-bottom: 1px solid rgba(200, 200, 200, 0.3) !important;
-    padding: 15px;
-    margin-bottom: 20px; }
+
+#infoGame {
+  width: 100%;
+  border-bottom: 1px solid rgba(200, 200, 200, 0.3) !important;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: white; }
 
 #whiteContainer {
   display: flex;
@@ -114,7 +116,73 @@ body {
   box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
   border-radius: 10px; }
 
+#choice_container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  background: -moz-radial-gradient(center, ellipse cover, #828282 0%, black 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #828282 0%, black 100%);
+  background: radial-gradient(ellipse at center, #828282 0%, black 100%); }
+  #choice_container #main {
+    border: 1px solid rgba(130, 130, 130, 0.5);
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%; }
+    #choice_container #main #BlackCard {
+      height: 350px;
+      width: 230px;
+      margin: 20px;
+      padding: 20px 15px 20px 15px;
+      border-radius: 10px;
+      word-wrap: break-word;
+      background-color: #141414;
+      box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+      color: white; }
+  #choice_container #choices {
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%; }
+    #choice_container #choices .whiteCard {
+      word-wrap: break-word;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      transition: all 0.3s ease 0s;
+      height: 220px;
+      width: 200px;
+      margin: 5px;
+      padding: 20px 15px 20px 15px;
+      background-color: white;
+      box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3); }
+      #choice_container #choices .whiteCard:hover, #choice_container #choices .whiteCard.focused {
+        box-shadow: 0px 0px 10px 1px green; }
+
 @media (max-width: 1000px) {
+  #choice_container #main {
+    height: 45%; }
+    #choice_container #main #BlackCard {
+      height: 220px !important;
+      width: 200px !important; }
+  #choice_container #choices {
+    height: 55%; }
+    #choice_container #choices .whiteCard {
+      height: 220px !important;
+      width: 200px !important;
+      margin: 5px !important; }
+
   #usersContainer {
     height: auto !important;
     position: absolute;
@@ -153,6 +221,19 @@ body {
         #whiteContainer #whitehand .whiteCard:nth-child(5) {
           margin-top: -180px !important; } }
 @media (max-width: 430px) {
+  #choice_container #main {
+    height: 30%; }
+    #choice_container #main #BlackCard {
+      height: 130px !important;
+      width: 130px !important;
+      margin: 5px !important; }
+  #choice_container #choices {
+    height: 70%; }
+    #choice_container #choices .whiteCard {
+      height: 130px !important;
+      width: 130px !important;
+      margin: 5px !important; }
+
   #usersContainer {
     height: auto !important; }
 

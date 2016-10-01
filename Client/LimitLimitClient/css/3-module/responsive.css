@@ -1,4 +1,16 @@
 @media (max-width: 1000px) {
+  #choice_container #main {
+    height: 45%; }
+    #choice_container #main #BlackCard {
+      height: 220px !important;
+      width: 200px !important; }
+  #choice_container #choices {
+    height: 55%; }
+    #choice_container #choices .whiteCard {
+      height: 220px !important;
+      width: 200px !important;
+      margin: 5px !important; }
+
   #usersContainer {
     height: auto !important;
     position: absolute;
@@ -37,6 +49,19 @@
         #whiteContainer #whitehand .whiteCard:nth-child(5) {
           margin-top: -180px !important; } }
 @media (max-width: 430px) {
+  #choice_container #main {
+    height: 30%; }
+    #choice_container #main #BlackCard {
+      height: 130px !important;
+      width: 130px !important;
+      margin: 5px !important; }
+  #choice_container #choices {
+    height: 70%; }
+    #choice_container #choices .whiteCard {
+      height: 130px !important;
+      width: 130px !important;
+      margin: 5px !important; }
+
   #usersContainer {
     height: auto !important; }
 
