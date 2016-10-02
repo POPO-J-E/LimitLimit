@@ -15,10 +15,10 @@ EnterWorldScene.prototype = {
     jsonData:null,
     textFieldUserNameCaption:null, //html
     currentPlayer:null,
-    otherPlayers:[],
+    otherPlayers:{},
     playerList:null, //html
 
-    hand:[],
+    hand:{},
     whiteHand:null, //html
 
     blackCard:null,
@@ -84,29 +84,30 @@ EnterWorldScene.prototype = {
             {
               this.setupNewPlayer();
               break;
-             
             }
             case Events.NEW_TURN:
             {
               this.setupNewTurn();
               break;
-             
             }
             case Events.NEW_TURN_WINNER:
             {
               this.setupNewTurnWinner();
               break;
-             
             }
             case Events.PLAY_DONE:
             {
               this.onPlayDone();
               break;
-             
             }
             case Events.USER_PLAY_DONE:
             {
               this.onUserPlayDone();
+              break;
+            }
+            case Events.ALL_PLAYS_DONE:
+            {
+              this.onAllPlaysDone();
               break;
              
             }
@@ -255,6 +256,13 @@ EnterWorldScene.prototype = {
         _player.winnercards =  jsonObj.winnercards; 
         _player.numcardsleft =  jsonObj.numcardsleft;*/ 
     },
+    findAndUpdatePlayer:function(jsonObj)
+    {
+        var id = jsonObj.id;
+        var player = this.otherPlayers[id];
+        this.updatePlayer(player, jsonObj);
+        return player;
+    },
     addPlayer:function(_player, current = false)
     {
         $model = this.playerList.find('.model');
@@ -299,7 +307,7 @@ EnterWorldScene.prototype = {
         '<div class="whiteCard"></div>'
         if(this.jsonData.hand.length>0)
         {
-            this.hand = [];
+            this.hand = {};
             this.whiteHand.html('');
 
             for(var i=0;i<this.jsonData.hand.length;i++)
@@ -402,9 +410,16 @@ EnterWorldScene.prototype = {
     onPlayDone:function()
     {
         this.sendMessage('on play done');
+        this.updatePlayer(this.currentPlayer,this.jsonData); 
     },
     onUserPlayDone:function()
     {
         this.sendMessage('on user play done');
+        var player = this.findAndUpdatePlayer(this.jsonData.player);
+    },
+    onAllPlaysDone:function()
+    {
+        this.sendMessage("all plays done");
+        
     },
 };  

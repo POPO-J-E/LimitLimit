@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"pla",
+				"player"
+			],
+			[
+				"js",
+				"jsonObj"
+			],
+			[
+				"se",
+				"sendMessage〔function〕"
+			],
+			[
+				"PLAY",
+				"PLAY_DONE"
+			],
+			[
+				"ha",
+				"hasPlayed"
+			],
+			[
+				"usern",
+				"username"
+			],
+			[
+				"curren",
+				"currentPlayer〔variable〕"
+			],
+			[
 				"a",
 				"applyClick〔function〕"
 			],
@@ -348,26 +376,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/cards.js",
-			"settings":
-			{
-				"buffer_size": 1456,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/Card.js",
-			"settings":
-			{
-				"buffer_size": 1132,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "src/Player.js",
 			"settings":
 			{
-				"buffer_size": 1239,
+				"buffer_size": 1911,
 				"line_ending": "Windows"
 			}
 		},
@@ -375,15 +387,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 3767,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/function.js",
-			"settings":
-			{
-				"buffer_size": 1032,
+				"buffer_size": 3830,
 				"line_ending": "Windows"
 			}
 		},
@@ -391,7 +395,31 @@
 			"file": "src/GameScene.js",
 			"settings":
 			{
-				"buffer_size": 11208,
+				"buffer_size": 12783,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/GameConfig.js",
+			"settings":
+			{
+				"buffer_size": 787,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Card.js",
+			"settings":
+			{
+				"buffer_size": 1302,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/login.js",
+			"settings":
+			{
+				"buffer_size": 2676,
 				"line_ending": "Windows"
 			}
 		},
@@ -400,14 +428,6 @@
 			"settings":
 			{
 				"buffer_size": 916,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/GameConfig.js",
-			"settings":
-			{
-				"buffer_size": 772,
 				"line_ending": "Windows"
 			}
 		}
@@ -521,10 +541,13 @@
 	],
 	"file_history":
 	[
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/GameConfig.js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/cards.js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/Card.js",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/views/login.php",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/login.js",
+		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/js/function.js",
 		"/C/Users/kifkif/AppData/Local/Temp/Rar$DIa0.122/loading.js",
-		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/GameConfig.js",
 		"/C/Users/kifkif/AppData/Roaming/Sublime Text 3/Packages/JsFormat/Default (Windows).sublime-keymap",
 		"/C/Users/kifkif/AppData/Local/Temp/Rar$EXa0.048/multiplayer_cocos2dx-js_using_netty_websockets-master/Client/WarCardJS/index.html",
 		"/C/Users/kifkif/AppData/Local/Temp/Rar$DIa0.858/main.js",
@@ -536,7 +559,6 @@
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/GameScene.js",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/css/style.css",
 		"/D/Programmes/Logiciels/ImageMagick-7.0.3-Q16/index.html",
-		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/Card.js",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/src/resource.js",
 		"/D/Documents/Projets/LimitLimit/Client/Web/index.html",
 		"/D/Documents/Projets/LimitLimit/Client/LimitLimitClient/index.html",
@@ -646,9 +668,7 @@
 		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Provider/Pool.php",
 		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Resources/config/validation.xml",
 		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Provider/FileProvider.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Resources/config/provider.xml",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Provider/ImageProvider.php",
-		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/admin-bundle/Controller/CRUDController.php"
+		"/D/Programmes/Logiciels/wamp/www/BDA/vendor/sonata-project/media-bundle/Resources/config/provider.xml"
 	],
 	"find":
 	{
@@ -824,63 +844,130 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/cards.js",
+					"file": "src/Player.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1456,
+						"buffer_size": 1911,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"function_name_status_row": 0,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/Card.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1132,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								286,
-								296
+								1903,
+								1903
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"function_name_status_row": 13,
+							"function_name_status_row": 77,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 592.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3830,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1643,
+								1659
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 28,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 135.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/GameScene.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12783,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8274,
+								8284
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 261,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3445.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/GameConfig.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 787,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								407,
+								407
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
+							"function_name_status_row": 17,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
@@ -893,98 +980,33 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/Player.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1239,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								807,
-								807
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"function_name_status_row": 35,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 225.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3767,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2353,
-								2353
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"function_name_status_row": 44,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 135.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
 					"buffer": 4,
-					"file": "js/function.js",
+					"file": "src/Card.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1032,
+						"buffer_size": 1302,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								759,
-								1019
+								1167,
+								1167
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"function_name_status_row": 33,
+							"function_name_status_row": 45,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 45.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -992,35 +1014,34 @@
 				},
 				{
 					"buffer": 5,
-					"file": "src/GameScene.js",
+					"file": "src/login.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11208,
+						"buffer_size": 2676,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9964,
-								9964
+								1496,
+								1496
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"function_name_status_row": 317,
+							"function_name_status_row": 42,
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4332.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1049,43 +1070,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 585.0,
+						"translation.y": 199.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/GameConfig.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 772,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								472,
-								472
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"color_scheme": "Packages/User/Color Highlighter/themes/Monokai (SL).tmTheme",
-							"function_name_status_row": 19,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]

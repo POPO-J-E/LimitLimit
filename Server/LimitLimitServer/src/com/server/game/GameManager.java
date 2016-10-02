@@ -41,6 +41,9 @@ public class GameManager
 	
 	private DeckBuilder deckBuilder;
 	
+	private int numberOfPlayers;
+	private int numberOfPlays;
+	
 	public GameManager()
 	{
 		final ResourceBundle configurationBundle = ResourceBundle.getBundle("configuration");
@@ -50,6 +53,8 @@ public class GameManager
 		deck = new Deck();
 		deckBlack = new Deck();
 		state = State.WAITING_FOR_PLAYERS;
+		numberOfPlayers = 0;
+		numberOfPlays = 0;
 		
 		rand = new Random();
 		
@@ -90,6 +95,7 @@ public class GameManager
 
 	public void setWinner(Player winner) {
 		this.winner = winner;
+		winner.setWinner(true);
 	}
 
 	public GameEventDispatcher getEventDispatcher() {
@@ -123,7 +129,11 @@ public class GameManager
 	        Player playerIt = ((Player)pair.getValue());
 	        playerIt.setPlayedCard(null);
 	        playerIt.setHasPlayed(false);
+	        playerIt.setWinner(false);
 	    }
+	    
+	    this.numberOfPlayers = players.size() - 1;
+	    this.numberOfPlays = 0;
 	}
 	
 	private void populateHand(Player player)
@@ -156,6 +166,13 @@ public class GameManager
 	}
 	
 	public void nextTurn(Player winner) {
+		this.deckBlack.discard(this.blackCard);
+		this.blackCard = (BlackCard)this.deckBlack.drawCard();
+		
+		this.state = State.WAITING_FOR_PLAYS;
+
+		this.initPlayers();
+		
 		if(winner == null)
 		{
 			chooseWinner();
@@ -165,13 +182,6 @@ public class GameManager
 			this.setWinner(winner);
 		}
 		
-		this.deckBlack.discard(this.blackCard);
-		this.blackCard = (BlackCard)this.deckBlack.drawCard();
-		
-		this.state = State.WAITING_FOR_PLAYS;
-		
-
-		this.initPlayers();
 		this.populateHands();
 	}
 	
@@ -266,5 +276,14 @@ public class GameManager
 
 	public void setBlackCard(BlackCard blackCard) {
 		this.blackCard = blackCard;
+	}
+
+	public boolean allPlaysDone() 
+	{
+		return numberOfPlays >= numberOfPlayers;
+	}
+
+	public void onPlayDone() {
+		this.numberOfPlays++;
 	}
 }

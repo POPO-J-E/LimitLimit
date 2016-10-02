@@ -46,14 +46,31 @@ public class GameEventDispatcher implements GameEventInterface
 		{
 			player.setPlayedCard(card);
 			player.setHasPlayed(true);
+			player.getHand().remove(card);
+			gameManager.getDeck().discard(card);
+			gameManager.onPlayDone();
 			
 			responseDispatcher.ResponseDispatchePlayDone(player, card);
+			
+			if(gameManager.allPlaysDone())
+			{
+				new java.util.Timer().schedule( 
+				        new java.util.TimerTask() {
+				            @Override
+				            public void run() {
+				            	allPlaysDone();
+				            }
+				        }, 
+				        2000
+				    );
+				
+			}
 			
 			return true;
 		}
 		else
 		{
-			responseDispatcher.ResponseDispatcheError("You dont have this card");
+			responseDispatcher.ResponseDispatcheError(player, "You dont have this card");
 			return true;
 		}
 		
@@ -63,6 +80,14 @@ public class GameEventDispatcher implements GameEventInterface
 	{
 		this.gameManager.begin();
 		responseDispatcher.ResponseDispatcheNextTurn();
+		
+		return true;
+	}
+	
+	public boolean allPlaysDone() 
+	{
+		//this.gameManager.begin();
+		responseDispatcher.ResponseDispatcheAllPlaysDone();
 		
 		return true;
 	}

@@ -161,9 +161,44 @@ public class GameResponseDispatcher {
 		return true;
 	}
 
-	public void ResponseDispatcheError(String string) 
+	public boolean ResponseDispatcheError(Player player, String message) 
 	{
 		// TODO Auto-generated method stub
+		JSONObject currentPlayerJsonObj = setPlayerToJson(player);
+		currentPlayerJsonObj.put("error", message);
+		setPlayerJson(player, Config.ERROR, currentPlayerJsonObj);
 		
+		return true;
+	}
+
+	public boolean ResponseDispatcheAllPlaysDone() 
+	{
+		JSONArray ArrayPlays = new JSONArray();
+		
+		Iterator<Entry<Integer, Player>> it1 = this.gameManager.getPlayers().entrySet().iterator();
+	    while (it1.hasNext()) {
+	    	@SuppressWarnings("rawtypes")
+			Map.Entry pair = (Map.Entry)it1.next();
+	        Player playerIt = ((Player)pair.getValue());
+	        
+	        JSONObject play = this.setCardToJson(playerIt.getPlayedCard());
+	        JSONObject playerJsonObjIt = setPlayerToJson(playerIt);
+	        play.put("player", playerJsonObjIt);
+	        ArrayPlays.put(play);
+	    }
+	    
+		Iterator<Entry<Integer, Player>> it = this.gameManager.getPlayers().entrySet().iterator();
+	    while (it.hasNext()) {
+	    	@SuppressWarnings("rawtypes")
+			Map.Entry pair = (Map.Entry)it.next();
+	        Player playerIt = ((Player)pair.getValue());
+	        
+        	JSONObject playerJsonObjIt = setPlayerToJson(playerIt);
+        	playerJsonObjIt.put("plays", ArrayPlays);
+        	
+        	setPlayerJson(this.gameManager.getPlayers().get(playerIt.getId()), Config.ALL_PLAYS_DONE, playerJsonObjIt);
+	    }
+	    
+		return true;
 	}
 }
