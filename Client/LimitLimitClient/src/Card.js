@@ -32,6 +32,14 @@ Card.prototype = {
 
         this.htmlObject.on("touchstart", this.tapHandler);
     },
+    setHtmlChoice:function (_object) {        
+        this.htmlObject = _object;
+
+        var card = this;
+        this.htmlObject.click(function(){
+            card.game.applyChoiceClick(card);
+        });
+    },
     tapHandler:function (event) 
     {
         if(!this.tapedTwice) {

@@ -51,11 +51,11 @@ EnterWorldScene.prototype = {
     { 
         var userName = this.jsonData.username;
 
-        this.textFieldUserNameCaption = $('#infoGame');
+        this.textFieldUserNameCaption = $('.infoGame');
         this.playerList = $('#usersContainer ul');
 
         this.whiteHand = $('#whitehand');
-        this.blackCardHtml = $('#BlackCard');
+        this.blackCardHtml = $('.BlackCard');
 
         this.target = $('#DragAndDrop');
         this.sender = $('#sender');
@@ -435,6 +435,7 @@ EnterWorldScene.prototype = {
         this.sendMessage("all plays done");
 
         this.choices.html('');
+        this.selectedCard = null;
 
         var plays = this.jsonData.plays;
         if(plays.length>0)
@@ -466,7 +467,7 @@ EnterWorldScene.prototype = {
         //this.plays[card.id] = card;
 
         var cardHtml = $('<div class="whiteCard"></div>').html(card.message + " | by " + jsonObj.player.username);
-        card.setHtml(cardHtml);
+        //card.setHtmlChoice(cardHtml);
         this.choices.append(cardHtml);
     },
     addPlayToChoiceView:function(jsonObj)
@@ -475,7 +476,7 @@ EnterWorldScene.prototype = {
         //this.plays[card.id] = card;
 
         var cardHtml = $('<div class="whiteCard"></div>').html(card.message);
-        card.setHtml(cardHtml);
+        card.setHtmlChoice(cardHtml);
         this.choices.append(cardHtml);
     },
     showChoices:function(show)
@@ -488,5 +489,14 @@ EnterWorldScene.prototype = {
         {
             this.choiceView.addClass("hidden")
         }
+    },
+    applyChoiceClick:function(card)
+    {
+        if(this.selectedCard)
+        {
+            this.selectedCard.htmlObject.removeClass('selected')
+        }
+        this.selectedCard = card;
+        this.selectedCard.htmlObject.addClass('selected')
     },
 };  
