@@ -20,6 +20,7 @@ EnterWorldScene.prototype = {
 
     hand:{},
     whiteHand:null, //html
+    whiteCardModel:null, //html
 
     blackCard:null,
     blackCardHtml:null, //html
@@ -29,6 +30,11 @@ EnterWorldScene.prototype = {
     sender:null, //html
 
     canPlay:true,
+    winner:false,
+
+    choiceView:null, //html
+    choices:null, //html
+    senderWinner:null,
 
     init:function (_jsondata) {
         this.jsonData = _jsondata;
@@ -53,6 +59,11 @@ EnterWorldScene.prototype = {
 
         this.target = $('#DragAndDrop');
         this.sender = $('#sender');
+
+        this.choiceView = $('#choice_container');
+        this.choices = this.choiceView.find('#choices')
+        this.senderWinner = this.choiceView.find('#sender-winner');
+
         var game = this;
         this.sender.click(function(){
             game.sendCard();
@@ -116,7 +127,7 @@ EnterWorldScene.prototype = {
     },
     setMessage:function(_message)
     {
-        this.textFieldUserNameCaption.html(_message); 
+        this.textFieldUserNameCaption.each(function(){$(this).html(_message);});
         console.log("CaptionMessage->"+_message);
     },
     setTurnMessage:function()
@@ -290,11 +301,13 @@ EnterWorldScene.prototype = {
         
         this.addPlayer(newPlayer);
         this.updatePlayer(newPlayer,this.jsonData);*/
+        this.winner = false;
         this.setupTurn();
         this.enablePlays(true);
     },
     setupNewTurnWinner:function()
     {
+        this.winner = true;
         this.setupTurn();
     },
     setupTurn:function()
@@ -330,7 +343,7 @@ EnterWorldScene.prototype = {
         var card = new Card(this, this.jsonData.blackcard.id, this.jsonData.blackcard.message, false);
         this.blackCard = card;
 
-        this.blackCardHtml.html(card.message);
+        this.blackCardHtml.each(function(){$(this).html(card.message);});
     },
     applyClick:function(card)
     {
@@ -420,6 +433,60 @@ EnterWorldScene.prototype = {
     onAllPlaysDone:function()
     {
         this.sendMessage("all plays done");
-        
+
+        this.choices.html('');
+
+        var plays = this.jsonData.plays;
+        if(plays.length>0)
+        {
+            if(this.winner)
+            {
+                this.senderWinner.removeClass('hidden');
+                for(var i=0;i<plays.length;i++)
+                {
+                    this.addPlayToChoiceView(plays[i]);
+                } 
+            }
+            else
+            {
+                this.senderWinner.addClass('hidden');
+                for(var i=0;i<plays.length;i++)
+                {
+                    this.addCardToChoiceView(plays[i]);
+                } 
+            }
+            
+        }    
+
+        this.showChoices(true);
+    },
+    addCardToChoiceView:function(jsonObj)
+    {
+        var card = new Card(this, jsonObj.id, jsonObj.message);
+        //this.plays[card.id] = card;
+
+        var cardHtml = $('<div class="whiteCard"></div>').html(card.message + " | by " + jsonObj.player.username);
+        card.setHtml(cardHtml);
+        this.choices.append(cardHtml);
+    },
+    addPlayToChoiceView:function(jsonObj)
+    {
+        var card = new Card(this, jsonObj.id, jsonObj.message);
+        //this.plays[card.id] = card;
+
+        var cardHtml = $('<div class="whiteCard"></div>').html(card.message);
+        card.setHtml(cardHtml);
+        this.choices.append(cardHtml);
+    },
+    showChoices:function(show)
+    {
+        if(show)
+        {
+            this.choiceView.removeClass("hidden")
+        }
+        else
+        {
+            this.choiceView.addClass("hidden")
+        }
     },
 };  

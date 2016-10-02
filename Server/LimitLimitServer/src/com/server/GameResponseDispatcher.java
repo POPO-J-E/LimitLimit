@@ -174,6 +174,7 @@ public class GameResponseDispatcher {
 	public boolean ResponseDispatcheAllPlaysDone() 
 	{
 		JSONArray ArrayPlays = new JSONArray();
+		JSONArray ArrayPlaysForWinner = new JSONArray();
 		
 		Iterator<Entry<Integer, Player>> it1 = this.gameManager.getPlayers().entrySet().iterator();
 	    while (it1.hasNext()) {
@@ -182,9 +183,14 @@ public class GameResponseDispatcher {
 	        Player playerIt = ((Player)pair.getValue());
 	        
 	        JSONObject play = this.setCardToJson(playerIt.getPlayedCard());
-	        JSONObject playerJsonObjIt = setPlayerToJson(playerIt);
-	        play.put("player", playerJsonObjIt);
-	        ArrayPlays.put(play);
+	        JSONObject playW = this.setCardToJson(playerIt.getPlayedCard());
+	        if(play != null)
+	        {
+	        	JSONObject playerJsonObjIt = setPlayerToJson(playerIt);
+		        play.put("player", playerJsonObjIt);
+		        ArrayPlays.put(play);
+		        ArrayPlaysForWinner.put(playW);
+	        }
 	    }
 	    
 		Iterator<Entry<Integer, Player>> it = this.gameManager.getPlayers().entrySet().iterator();
@@ -194,7 +200,10 @@ public class GameResponseDispatcher {
 	        Player playerIt = ((Player)pair.getValue());
 	        
         	JSONObject playerJsonObjIt = setPlayerToJson(playerIt);
-        	playerJsonObjIt.put("plays", ArrayPlays);
+        	if(playerIt.isWinner())
+        		playerJsonObjIt.put("plays", ArrayPlaysForWinner);
+        	else
+        		playerJsonObjIt.put("plays", ArrayPlays);
         	
         	setPlayerJson(this.gameManager.getPlayers().get(playerIt.getId()), Config.ALL_PLAYS_DONE, playerJsonObjIt);
 	    }
